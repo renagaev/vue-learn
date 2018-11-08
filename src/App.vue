@@ -1,28 +1,58 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <v-app>
+        <v-navigation-drawer>
+            <v-list>
+                <v-list-tile>
+                    <v-list-tile-title>All</v-list-tile-title>
+
+                    <v-list-group>
+                        <v-list-tile slot="activator" @click="test">
+                            <v-list-tile-content>
+                                <v-list-tile-title>Labels</v-list-tile-title>
+                            </v-list-tile-content>
+                        </v-list-tile>
+
+                        <v-list-tile v-for="label in labels" @click="">
+                            <v-list-tile-content>
+                                <v-list-tile-title>
+                                    {{label}}
+                                </v-list-tile-title>
+                            </v-list-tile-content>
+                        </v-list-tile>
+                    </v-list-group>
+                </v-list-tile>
+            </v-list>
+        </v-navigation-drawer>
+
+        <v-content>
+
+        </v-content>
+    </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+    import store from './store'
 
-export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
-}
+    export default {
+        store,
+        name: 'App',
+        components: {
+
+        },
+        data() {
+            return {
+                //
+            }
+        },
+        computed: {
+            labels(){
+                return this.$store.labels;
+            }
+        },
+        methods: {
+            test(){
+                console.log(this.$store.labels)
+            }
+        }
+    }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
