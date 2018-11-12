@@ -2,12 +2,12 @@ import Vuex from 'vuex'
 import Vue from 'vue'
 
 Vue.use(Vuex);
-
 const store = new Vuex.Store({
-    state:
-        { labels: ['first', 'second', 'third'],
+    state: {
+        labels: 'kkakak',
         contacts:{},
-        },
+
+    },
 
     mutations:{
         addLabel(state, label){
@@ -16,8 +16,12 @@ const store = new Vuex.Store({
         addContacts(state, contact){
             state.contacts[contact.name] = contact
         }
+    },
+    getters:{
+        notes(state){
+            return state.labels
+        }
+
     }
+
 });
-export default {
-    store
-}
